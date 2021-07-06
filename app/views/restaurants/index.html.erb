@@ -1,0 +1,18 @@
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  Restaurants
+</div>
+<div class="container">
+  <div class="row">
+    <button type="button" class="btn btn-primary"><%= link_to "New restaurant", new_restaurant_path %></button>
+     <div class="row">
+       <% @restaurants.each do |restaurant| %>
+          <div class="card-pick col-sm-3">
+            <h3 class="card-pick-info"><%= link_to restaurant.name, restaurant_path(restaurant)%></h3>
+            <h4><%=restaurant.address%></h4>
+            <p><strong><%= restaurant.category %></strong></p>
+            <button type="button" class="btn-gradient"><%= link_to "More details", restaurant_path(restaurant) %></button>
+          </div>
+        <% end %>
+        </div>
+  </div>
+</div>
