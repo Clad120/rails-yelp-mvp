@@ -23,7 +23,7 @@ a:hover {
 
 text-decoration: none;
 
-color: red;
+color: white;
 
 }
 
@@ -135,5 +135,14 @@ grid-template-columns: repeat(3, 1fr);
 grid-auto-rows: auto;
 
 grid-gap: 1rem;
+
+}
+
+
+
+.formbox {
+    margin-top: 50px;
+    margin-right: 60%;
+    margin-bottom: 50px;
 
 }

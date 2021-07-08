@@ -7,9 +7,15 @@
      <div class="row">
        <% @restaurants.each do |restaurant| %>
           <div class="card-pick col-sm-3">
-            <h3 class="card-pick-info"><%= link_to restaurant.name, restaurant_path(restaurant)%></h3>
-            <h4><%=restaurant.address%></h4>
-            <p><strong><%= restaurant.category %></strong></p>
+            <img src="https://images.pexels.com/photos/33545/sunrise-phu-quoc-island-ocean.jpg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="">
+            <h3 class="card-pick-info"><%= restaurant.name %></h3>
+
+            <p><%=restaurant.address%></p>
+            <% if restaurant.reviews.count == 0 %>
+              <p><strong><%= restaurant.category %></strong>   <%= restaurant.reviews.count %> ratings yet </p>
+              <% else %>
+              <p><strong><%= restaurant.category %></strong>  (<%= restaurant.reviews.count %>) reviews </p>
+              <% end %>
             <button type="button" class="btn-gradient"><%= link_to "More details", restaurant_path(restaurant) %></button>
           </div>
         <% end %>

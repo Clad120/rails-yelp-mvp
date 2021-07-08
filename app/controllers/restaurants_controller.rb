@@ -2,10 +2,16 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @ratings = []
+    @reviews = Review.all
+    @reviews.each do |review|
+      @ratings << review.rating
+    end
   end
 
   def show
-  @restaurants = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
+    @review = Review.new
   end
 
   def new
@@ -16,10 +22,20 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-     redirect_to restaurant_path(@restaurant)
+      redirect_to restaurant_path(@restaurant)
     else
-     render :new
+      render :new
     end
+  end
+
+  def edit
+    @restaurants = Restaurant.find(params[:id])
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.update(restaurant_params)
+    redirect_to restaurant_path(@restaurant)
   end
 
   private
